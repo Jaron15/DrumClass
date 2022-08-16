@@ -1,5 +1,8 @@
 * {
     box-sizing: border-box;
+    --glow: rgba(63, 180, 254, 0.6);
+    --glow-bright: rgba(63, 180, 254, 1);
+    --glow-dim: rgba(63, 180, 254, 0.3);
   }
   
   body {

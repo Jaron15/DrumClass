@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 import Head from 'next/head';
+import Hero from '../components/Hero';
 
 
 
@@ -24,6 +25,7 @@ const HomePage = (props) => {
         contents="Free tool to learn how to drum at all levels!"
         />
     </Head>
+    <Hero />
    <h1>Hello world </h1>
     </Fragment>
   )
