@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 
 import Head from 'next/head';
-import Hero from '../components/Hero';
+import Hero from '../components/hero/Hero';
+import VideoCard from '../components/list/VideoCard';
 
 
 
@@ -26,7 +27,7 @@ const HomePage = (props) => {
         />
     </Head>
     <Hero />
-   <h1>Hello world </h1>
+   <VideoCard />
     </Fragment>
   )
 }

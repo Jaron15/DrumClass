@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 2vh;
-    width: 50%
+    width: 50%;
   }
 
 .heroHeader {
@@ -71,6 +71,7 @@
     color: #e6e6e6;
     text-shadow:1px 1px 10px var(--glow-dim), 1px 1px 10px var(--glow-dim);
     font-style: italic;
+  
 }
 
 @-webkit-keyframes text-focus-in {
@@ -110,7 +111,7 @@
     .btnInfo {
         font-size: 4vh;
         margin-top: 3vh;
-        width: 60vh;
+        width: 67vh;
     }
   }
   @media only screen and (max-width: 1200px)  {
@@ -122,27 +123,28 @@
     }
     .btnInfo {
         font-size: 3vh;
-        margin-top: 4vh;
+        margin-top: 2vh;
         width: 55vh;
     }
   }
-  @media only screen and (max-width: 1075px)  {
+  @media only screen and (max-width: 1050px)  {
     .heroBtn {
         margin-top: -3.5vh;
-        width: 35vh;
-        height: 35px;
+        width: 18vh;
+        height: 80px;
     }
     .btnInfo {
         font-size: 3vh;
-        margin-top: 8vh;
-        width: 40vh;
+        
+        width: 47vh;
     }
   }
   @media only screen and (max-width: 870px)  {
     .heroBtn {
-        margin-top: 3vh;
+        margin-top: 12vh;
         width: 25vh;
-        height: 10vh
+        height: 10vh;
+
     }
     .btnInfo {
         display: none;
@@ -150,8 +152,14 @@
   }
   @media only screen and (max-width: 850px)  {
     .heroBtn {
-        margin-top: 3vh;
         width: 20vh;
         height: 10vh
+    }
+  }
+  @media only screen and (max-width: 480px)  {
+    .heroBtn {
+      margin-top: 5vh;
+        width: 18vh;
+        height: 9vh
     }
   }

@@ -5,13 +5,6 @@ import { Fragment } from 'react';
 import styles from './Hero.module.css'
 import HeroContent from './HeroContent';
 
-// const heroImage = <Image src='/DrumClassLogo' ;
-// const useStyles = makeStyles((theme) => ({
-//     hero: {
-//         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), src)`
-//     }
-// }))
-
 
 const Hero = () => {
   return (
