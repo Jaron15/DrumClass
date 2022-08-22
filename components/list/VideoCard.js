@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
  
-export default function VideoCard() {
+export default function VideoCard(props) {
     const cardStyle = {
         display: "block",
         transitionDuration: "0.3s",
@@ -25,16 +25,16 @@ export default function VideoCard() {
         <CardMedia
           component="img"
           height="140"
-          image="https://image.shutterstock.com/image-illustration/3d-render-number-one-glowing-260nw-1890767740.jpg"
-          alt='first image'
-          sx={{objectFit: 'contain'}}
+          image={props.image}
+          alt={props.description}
+          sx={{objectFit: 'contain', height: {}}}
         />
         <CardContent sx={{ p:1, pl:2, objectFit: 'contain'}}>
           <Typography  marginBottom='0px' gutterBottom variant="h5" component="div">
-            Title
+            {props.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Description
+            {props.description}
           </Typography>
         </CardContent>
       </CardActionArea>
