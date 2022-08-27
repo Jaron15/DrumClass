@@ -1,0 +1,40 @@
+.slideLeft {
+    -webkit-animation: slide-in-left 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+            animation: slide-in-left 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+.slideLeftMid {
+    -webkit-animation: slide-in-left 0.9s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+            animation: slide-in-left 0.9s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+.slideLeftLow {
+    -webkit-animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+            animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+.textFlickerGlow {
+    -webkit-animation: text-flicker-in-glow 4s linear both;
+            animation: text-flicker-in-glow 4s linear both;
+}
+@-webkit-keyframes slide-in-left {
+0% {
+  -webkit-transform: translateX(-1000px);
+          transform: translateX(-1000px);
+  opacity: 0;
+}
+100% {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+}
+}
+@keyframes slide-in-left {
+0% {
+  -webkit-transform: translateX(-1000px);
+          transform: translateX(-1000px);
+  opacity: 0;
+}
+100% {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+}
+}

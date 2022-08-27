@@ -3,14 +3,27 @@ import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from 'next/image';
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+import styles from './Navbar.module.css';
+import PropTypes from 'prop-types';
+import Link from 'next/link'
 
 
+const drawerWidth = 240;
+const navItems = ['Home', 'Categories', 'About'];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -53,15 +66,71 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-const styles = {
-    customizeToolbar: {
-      minHeight: 36
-    }
-  };
 
-export default function Navbar() {
+
+function Navbar(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    console.log('clicked');
+    setMobileOpen(!mobileOpen);
+  };
+  const drawer = (
+     
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      {mobileOpen &&
+      <React.Fragment>
+      <Typography variant="h6" sx={{ my: 2, fontFamily: "Rock Salt", }}>
+        Drum Class
+      </Typography>
+      <Divider />
+      <List sx={{overflow: 'hidden'}}>
+          <ListItem key='Home' disablePadding className={styles.slideLeft}>
+            <Link href='/'>
+            <ListItemButton sx={{ textAlign: 'center', margin: '1vh'}}>
+            <Typography sx={{fontWeight: 'bold', fontSize: '2.25vh', textAlign: 'center', width: '100%'}} >
+              Home</Typography>
+            </ListItemButton>
+            </Link>
+          </ListItem>
+
+          <ListItem key='About' disablePadding className={styles.slideLeftMid}>
+          <Link href='/categories'>
+            <ListItemButton sx={{ textAlign: 'center', margin: '1vh'}}>
+            <Typography sx={{fontWeight: 'bold', fontSize: '2.25vh', textAlign: 'center', width: '100%'}} >
+              Categories</Typography>
+            </ListItemButton>
+            </Link>
+          </ListItem>
+          
+          <ListItem key='Contact' disablePadding className={styles.slideLeftLow}>
+            <ListItemButton sx={{ textAlign: 'center', margin: '1vh' }}>
+            <Typography sx={{fontWeight: 'bold', fontSize: '2.25vh', textAlign: 'center', width: '100%'}} >
+              About</Typography>
+            </ListItemButton>
+          </ListItem>
+         
+      </List>
+      <Box sx={{position: 'absolute', bottom: 25, width: '100%'}}>
+      <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, textAlign: 'center' }}
+          >
+            <img src="/DrumClassLogo.png" height='55px' width="55px"/>
+          </Typography>
+          </Box>
+      </React.Fragment>
+      }
+    </Box>
+   
+  );
+  
+  const container = window !== undefined ? () => window().document.body : undefined;
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ display: 'flex', flexGrow: 1 }}>
       <AppBar position="static" style={{backgroundColor: '#ffffff', height: 80, }}>
         <Toolbar>
           <IconButton
@@ -69,6 +138,7 @@ export default function Navbar() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
+            onClick={handleDrawerToggle}
             sx={{ mr: 2 }}
           >
             <MenuIcon
@@ -95,6 +165,33 @@ export default function Navbar() {
           </Search>
         </Toolbar>
       </AppBar>
+      <Box component="nav">
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      
     </Box>
   );
 }
+
+Navbar.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
+};
+export default Navbar;
