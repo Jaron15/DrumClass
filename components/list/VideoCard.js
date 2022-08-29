@@ -24,13 +24,13 @@ export default function VideoCard(props) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="150"
           image={props.image}
           alt={props.description}
-          sx={{objectFit: 'contain', height: {}}}
+          sx={{objectFit: 'contain', width: '100%', margin: 'none'}}
         />
         <CardContent sx={{ p:1, pl:2, objectFit: 'contain'}}>
-          <Typography  marginBottom='0px' gutterBottom variant="h5" component="div">
+          <Typography sx={{fontWeight:'bold'}} marginBottom='0px' gutterBottom component="div">
             {props.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">

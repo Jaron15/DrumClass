@@ -4,8 +4,10 @@ import { Box, Grid, Typography } from '@mui/material'
 import React, { Fragment, useRef, useState } from 'react'
 import VideoCard from './VideoCard'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
- 
-const VideoList = () => {
+
+const VideoList = (props) => {
+  const videos = props.videos;
+  
   const DUMMY_VIDEOS = [
     {
       id: "1",
@@ -118,13 +120,13 @@ const VideoList = () => {
             width="150vh"
             // overflow='auto'
           >
-            {DUMMY_VIDEOS.map((video) => (
+            {videos.map((video) => (
               <VideoCard
-                key={video.id}
-                id={video.id}
-                image={video.image}
-                title={video.title}
-                description={video.description}
+                key={video.id.videoId}
+                id={video.id.videoId}
+                image={video.snippet.thumbnails.high.url}
+                title={video.snippet.title}
+                description={video.snippet.description}
               />
             ))}
           </Grid>
