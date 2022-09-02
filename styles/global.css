@@ -10,3 +10,26 @@
     margin: 0;
 
   }
+  button.rec-dot {
+    display: none;
+  }
+
+.rec.rec-arrow {
+    background-color: rgba(158,214,255,0.35) !important ;
+    transition: all 0.3s ease;
+    color: black !important;
+    border: black solid .5px
+}
+.rec.rec-arrow:enabled { 
+    color: black ;
+}
+.rec.rec-arrow:Hover {
+    background-color: rgba(63, 180, 254, .7) !important;
+    color:white !important;
+}
+.rec-arrow:hover:not(:disabled) {
+    transform: scale(1.2);
+}
+.rec.rec-arrow:disabled {
+  display: none;
+}

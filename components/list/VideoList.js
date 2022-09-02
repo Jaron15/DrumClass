@@ -1,13 +1,30 @@
-import { Button } from '@material-ui/core'
-import { ArrowBackIosOutlined } from '@material-ui/icons'
 import { Box, Grid, Typography } from '@mui/material'
 import React, { Fragment, useRef, useState } from 'react'
 import VideoCard from './VideoCard'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Carousel from 'react-elastic-carousel';
+
+
+
 
 const VideoList = (props) => {
   const videos = props.videos;
+  const responsive = [
+    {width: 1, itemsToShow: 1},
+    {width: 550, itemsToShow: 2},
+    {width: 768, itemsToShow: 3},
+    {width: 1200, itemsToShow: 4},
+  ];
   
+  const videoCards = [videos.map((video, index) => (
+    <VideoCard
+      data-value={index+1}
+      key={video.id.videoId}
+      id={video.id.videoId}
+      image={video.snippet.thumbnails.high.url}
+      title={video.snippet.title}
+      description={video.snippet.description}
+    />
+  ))];
   const DUMMY_VIDEOS = [
     {
       id: "1",
@@ -70,76 +87,19 @@ const VideoList = (props) => {
       >
         Category
       </Typography>
-      <Grid
-        container
-        sx={{ flexDirection: "row" }}
-        spacing={1}
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-        wrap="nowrap"
-        scroll="auto"
-        width="90%"
-        margin="auto"
-      >
-        <Box
-          sx={{
-            paddingRight: "20px",
-          }}
-        >
-          <ArrowBackIosOutlined
-            cursor="pointer"
-            fontSize="large"
-            onClick={scrollLeft}
-          />
-        </Box>
-
-        <Box
-          container
-          width="80%"
-          height="30vh"
-          overflow="hidden"
-          sx={{ margin: "0px, 0, 0, 0" }}
-          justifyContent="center"
-          alignItems="center"
-        >
-          {/* <Typography variant='h4' alignItems='center' textAlign='center'>Category</Typography> */}
-          <Grid
-            container
-            ref={listRef}
-            id="propsId"
-            sx={{ flexDirection: { xs: "column", sm: "column", md: "row" } }}
-            spacing={1}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            height="100%"
-            wrap="nowrap"
-            scroll="auto"
-            width="150vh"
-            // overflow='auto'
-          >
-            {videos.map((video) => (
-              <VideoCard
-                key={video.id.videoId}
-                id={video.id.videoId}
-                image={video.snippet.thumbnails.high.url}
-                title={video.snippet.title}
-                description={video.snippet.description}
-              />
-            ))}
-          </Grid>
-        </Box>
-        <Box
-          onClick={scrollRight}
-          sx={{
-            paddingLeft: "20px",
-          }}
-        >
-          <ArrowForwardIosIcon cursor="pointer" fontSize="large" />
-        </Box>
-      </Grid>
+          <Carousel breakPoints={responsive}>
+          {videos.map((video, index) => (
+    <VideoCard
+      data-value={index+1}
+      key={video.id.videoId}
+      id={video.id.videoId}
+      image={video.snippet.thumbnails.high.url}
+      title={video.snippet.title}
+      description={video.snippet.description}
+      channel={video.snippet.channelTitle}
+    />
+  ))}
+          </Carousel>
     </Fragment>
   );
 };

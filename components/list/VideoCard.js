@@ -10,7 +10,7 @@ export default function VideoCard(props) {
     const cardStyle = {
         display: "block",
         transitionDuration: "0.3s",
-        height: "90%",
+        height: "25vh",
         width: "35vh",
         margin: "1vh",
         marginTop: '1vh',
@@ -20,7 +20,7 @@ export default function VideoCard(props) {
      
      
   return (
-    <Card style={cardStyle}>
+    <Card  style={cardStyle}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -34,7 +34,7 @@ export default function VideoCard(props) {
             {props.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.description}
+            {props.channel}
           </Typography>
         </CardContent>
       </CardActionArea>
