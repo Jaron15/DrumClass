@@ -15,16 +15,6 @@ const VideoList = (props) => {
     {width: 1200, itemsToShow: 4},
   ];
   
-  const videoCards = [videos.map((video, index) => (
-    <VideoCard
-      data-value={index+1}
-      key={video.id.videoId}
-      id={video.id.videoId}
-      image={video.snippet.thumbnails.high.url}
-      title={video.snippet.title}
-      description={video.snippet.description}
-    />
-  ))];
   const DUMMY_VIDEOS = [
     {
       id: "1",
@@ -63,30 +53,21 @@ const VideoList = (props) => {
   ];
   const [] = useState();
   const listRef = useRef();
-  const scrollRight = (direction) => {
-    let distance = listRef.current.getBoundingClientRect().x - 50;
-    console.log(distance);
-    listRef.current.style.transform = `translate(-65vh)`;
-  };
-  const scrollLeft = (direction) => {
-    let distance = listRef.current.getBoundingClientRect().x - 50;
-    listRef.current.style.transform = `translate(0px)`;
-  };
-
+  
   return (
     <Fragment>
-      <Typography
+      {/* <Typography
         variant="h4"
         sx={{
           textAlign: "center",
           justifyContent: "center",
           marginTop: "2vh",
-          marginBottom: "1vh",
+          marginBottom: "2vh",
           fontFamily: "Rock Salt",
         }}
       >
-        Category
-      </Typography>
+        {videos[0].catName}
+      </Typography> */}
           <Carousel breakPoints={responsive}>
           {videos.map((video, index) => (
     <VideoCard
@@ -97,6 +78,7 @@ const VideoList = (props) => {
       title={video.snippet.title}
       description={video.snippet.description}
       channel={video.snippet.channelTitle}
+      category={videos[0].catName}
     />
   ))}
           </Carousel>
