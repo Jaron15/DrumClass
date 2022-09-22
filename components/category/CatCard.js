@@ -5,16 +5,16 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
+import { useRouter } from 'next/router';
  
 export default function CatCard(props) {
-    const cardStyle = {
-       
-    };
-     
-     
+const router = useRouter();
+  const catSelectHandler  = () => {
+    router.push('/categories/' + props.name)
+  }
   return (
     <Card sx={{ maxWidth: 345, boxShadow: 5, margin: 3 }}>
-      <CardActionArea>
+      <CardActionArea onClick={() => catSelectHandler(name)}>
         <CardMedia
           component="img"
           height="100%"
@@ -28,7 +28,7 @@ export default function CatCard(props) {
  
         }}
          variant="h5" >
-            Test Text Here
+            {props.name}
           </Typography>
         </Box>
       </CardActionArea>

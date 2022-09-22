@@ -6,58 +6,15 @@ import VideoCard from '../components/list/VideoCard';
 import { Container } from '@material-ui/core';
 import VideoList from '../components/list/VideoList';
 import Typography from '@mui/material/Typography';
-
-
-
+import ListGroup from '../components/list/ListGroup';
 
 const HomePage = (props) => {
-    const beginnerVideoData = props.bVideos;
-    const intermediateVideoData = props.iVideos;
-    const advancedVideoData = props.aVideos;
-  
+  const allVideos = props.videos
   return (
     <Fragment>
     <Hero />
     <Container>
-    <Typography
-        variant="h4"
-        sx={{
-          textAlign: "center",
-          justifyContent: "center",
-          marginTop: "2vh",
-          marginBottom: "2vh",
-          fontFamily: "Rock Salt",
-        }}
-      >
-        {beginnerVideoData[0].catName}
-      </Typography>
-   <VideoList videos={beginnerVideoData}/>
-   <Typography
-        variant="h4"
-        sx={{
-          textAlign: "center",
-          justifyContent: "center",
-          marginTop: "2vh",
-          marginBottom: "2vh",
-          fontFamily: "Rock Salt",
-        }}
-      >
-        {intermediateVideoData[0].catName}
-      </Typography>
-   <VideoList videos={intermediateVideoData}/>
-   <Typography
-        variant="h4"
-        sx={{
-          textAlign: "center",
-          justifyContent: "center",
-          marginTop: "2vh",
-          marginBottom: "2vh",
-          fontFamily: "Rock Salt",
-        }}
-      >
-        {advancedVideoData[0].catName}
-      </Typography>
-   <VideoList videos={advancedVideoData}/>
+    <ListGroup allVideos={allVideos} />
    </Container>
     </Fragment>
   )
@@ -77,12 +34,11 @@ export async function getStaticProps() {
     const aJson = await aResponse.json();
     const aDataBefore = aJson.items;
     const aData = aDataBefore.map(vid => ({...vid, catName: 'Advanced Drum Lessons'})) 
-
+ let allVideos = [];
+ allVideos.push(bData, iData, aData) 
   return {
     props: {
-      bVideos: bData,
-      iVideos: iData,
-      aVideos: aData,
+      videos: allVideos
     },
     // revalidate: 60
   };

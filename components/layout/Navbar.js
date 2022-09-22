@@ -20,6 +20,7 @@ import { useState } from 'react';
 import styles from './Navbar.module.css';
 import PropTypes from 'prop-types';
 import Link from 'next/link'
+import {useRouter} from 'next/router';
 
 
 const drawerWidth = 240;
@@ -72,6 +73,10 @@ function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const router = useRouter();
+  const goHome = () => {
+    router.push('/')
+  }
   const handleDrawerToggle = () => {
     console.log('clicked');
     setMobileOpen(!mobileOpen);
@@ -119,7 +124,9 @@ function Navbar(props) {
             component="div"
             sx={{ flexGrow: 1, textAlign: 'center' }}
           >
-            <img src="/DrumClassLogo.png" height='55px' width="55px"/>
+            <Link href='/'>
+            <img onClick={goHome} src="/DrumClassLogo.png" height='55px' width="55px"/>
+            </Link>
           </Typography>
           </Box>
       </React.Fragment>

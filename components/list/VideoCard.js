@@ -10,8 +10,8 @@ export default function VideoCard(props) {
     const cardStyle = {
         display: "block",
         transitionDuration: "0.3s",
-        height: "25vh",
-        width: "35vh",
+        height: "27vh",
+        width: "33vh",
         margin: "1vh",
         marginTop: '1vh',
         paddingBottom: '1vh',
@@ -27,10 +27,10 @@ export default function VideoCard(props) {
       <CardActionArea onClick={videoSelectHandler}>
         <CardMedia
           component="img"
-          height="150"
+          height="160"
           image={props.image}
           alt={props.description}
-          sx={{objectFit: 'contain', width: '100%', margin: 'none'}}
+          sx={{objectFit: 'cover', width: '100%', margin: 'none'}}
         />
         <CardContent sx={{ p:1, pl:2, objectFit: 'contain'}}>
           <Typography sx={{fontWeight:'bold', lineHeight: 1, marginTop: '.5vh'}} marginBottom='0px' gutterBottom component="div">
