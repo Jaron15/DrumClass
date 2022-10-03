@@ -9,12 +9,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Paper from '@mui/material/Paper';
 import VideoList from '../../../../components/list/VideoList';
 
-
 function SingleView(props) {
-    console.log(props.relatedVideos);
 
 const videoLink = ('https://www.youtube.com/embed/' + props.video[0].id);
-console.log(videoLink);
   return (
     <Fragment>
       <Typography variant='h4' sx={{
@@ -63,9 +60,9 @@ console.log(videoLink);
 }
 export async function getServerSideProps(context) {
     const videoId = context.params.videoId;
-    const videoCat = context.params.videoCat;
-    console.log(context);
+    const videoCat = context.params.category;
     const key  = process.env.API_KEY;
+    console.log('RIGHT HERE' + key);
     const videoRes = await fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=' + videoId + '&key=' + key)
     const videoJson = await videoRes.json();
     const videoData = videoJson.items;
@@ -78,7 +75,7 @@ export async function getServerSideProps(context) {
         props: {
             video: videoData,
             category: videoCat,
-            relatedVideos: relatedVidsFinal
+            relatedVideos: relatedVidsFinal,
         }
     }
 

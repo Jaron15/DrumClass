@@ -10,6 +10,7 @@ import ListGroup from '../components/list/ListGroup';
 
 const HomePage = (props) => {
   const allVideos = props.videos
+  console.log(allVideos);
   return (
     <Fragment>
     <Hero />

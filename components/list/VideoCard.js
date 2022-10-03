@@ -18,7 +18,7 @@ export default function VideoCard(props) {
         objectFit: 'contain'
       };
      const router = useRouter();
-     const videoSelectHandler = ()  => {
+     const videoSelectHandler = () => {
       router.push('/categories/'+ props.category + '/' + props.id);
      }
      

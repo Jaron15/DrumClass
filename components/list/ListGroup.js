@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 function ListGroup(props) {
     const allVideos = props.allVideos;
   return (
-    <Container>
+   <Container>
     {allVideos.map(vids =>  {
         return (
           <Container>
@@ -25,7 +25,7 @@ function ListGroup(props) {
      <VideoList videos={vids}/>
      </Container>
         )
-     
+      
     })}
   </Container>
   )
