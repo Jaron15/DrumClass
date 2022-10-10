@@ -62,7 +62,6 @@ export async function getServerSideProps(context) {
     const videoId = context.params.videoId;
     const videoCat = context.params.category;
     const key  = process.env.API_KEY;
-    console.log('RIGHT HERE' + key);
     const videoRes = await fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=' + videoId + '&key=' + key)
     const videoJson = await videoRes.json();
     const videoData = videoJson.items;

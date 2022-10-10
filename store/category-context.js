@@ -19,7 +19,7 @@ const CategoryContext = React.createContext({
     },
     {
     catName: 'fills',
-    subCats: ['beginner fills', 'intermediate fills', 'beginner fills', 'double bass']
+    subCats: ['beginner fills', 'intermediate fills', 'Advanced fills', ]
     },
 
 ]

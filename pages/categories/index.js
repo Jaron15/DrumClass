@@ -1,6 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React, { Fragment, useContext } from 'react';
-import { useSelector } from 'react-redux';
 import CatCard from '../../components/category/CatCard';
 import CategoryProvider from '../../store/CategoryProvider';
 import CategoryContext from '../../store/category-context';
@@ -9,7 +8,7 @@ import CategoryContext from '../../store/category-context';
 export default function CategoryPage() {
     const catCtx = useContext(CategoryContext)
     const categories = catCtx.categories;
-    console.log(categories);
+
     
     
 return (
