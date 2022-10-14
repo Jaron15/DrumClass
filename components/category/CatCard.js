@@ -13,7 +13,7 @@ const router = useRouter();
     router.push('/categories/' + props.name)
   }
   return (
-    <Card sx={{ maxWidth: 345, boxShadow: 5, margin: 3 }}>
+    <Card sx={{ maxWidth: {xs:150, md:345}, boxShadow: 5, margin: {xs:2, md:3} }}>
       <CardActionArea onClick={() => catSelectHandler(name)}>
         <CardMedia
           component="img"

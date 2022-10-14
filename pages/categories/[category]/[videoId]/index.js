@@ -1,5 +1,5 @@
-import { Box } from '@material-ui/core';
-import React from 'react'
+import { Box, Divider } from '@material-ui/core';
+import React, { useEffect, useState } from 'react'
 import { Fragment } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -7,11 +7,59 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Paper from '@mui/material/Paper';
+import {isMobile} from 'react-device-detect';
 import VideoList from '../../../../components/list/VideoList';
+import MobileList from '../../../../components/list/mobileList';
 
 function SingleView(props) {
-
+  const [mobileView, setMobileView] = useState(false)
+  useEffect(() => { 
+    if(isMobile) {
+      setMobileView(true)
+    }}, [])
+console.log(props.video[0].snippet.title);
 const videoLink = ('https://www.youtube.com/embed/' + props.video[0].id);
+if (mobileView) {
+  return (
+    <Fragment>
+      <Paper elevation={5} sx={{
+      alignItems: "center",
+      justifyContent: 'center',
+      textAlign: 'center',
+      width: '100%',
+      margin: 'auto'
+      }}>
+        <Box sx={{width: '100%', height: '35vh'}}>
+    <iframe src={videoLink} frameBorder='0' width='100%' height='100%' allowFullScreen></iframe>
+    </Box>
+
+    <Typography sx={{textAlign: 'start',fontSize: '2.5vh', fontWeight: 'bold', width: '100%', padding: .5, paddingLeft: 2}}>{props.video[0].snippet.title}</Typography>
+ 
+   
+      <Divider />
+    <Typography sx={{textAlign: 'start', alignItems: 'center', fontWeight: 'bold', width: '100%', paddingLeft: 2   }}>{props.video[0].snippet.channelTitle}</Typography>
+    <Typography sx={{textAlign: 'start', textDecoration: 'underline', fontSize: '1.5vh', width: '100%',paddingLeft: 2, marginBottom: .5 }}>Visit Channel</Typography>
+
+
+    <Accordion sx={{borderTop: 0,width: '100%', textAlign: 'start',  }}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon sx={{alignItems: 'end'}} />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography sx={{color:'black', fontWeight: 'bold'}} >Description</Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={{width: '100%', textAlign: 'center', margin: 'auto'}}>
+          <Typography sx={{fontSize: '2vh'}}>
+          {props.video[0].snippet.description}
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+    </Paper>
+    <MobileList videos={props.relatedVideos} /> 
+    </Fragment>
+  )}
+
   return (
     <Fragment>
       <Typography variant='h4' sx={{
@@ -56,7 +104,8 @@ const videoLink = ('https://www.youtube.com/embed/' + props.video[0].id);
     <VideoList videos={props.relatedVideos} />
     </Box>
     </Fragment>
-  )
+    
+    )
 }
 export async function getServerSideProps(context) {
     const videoId = context.params.videoId;

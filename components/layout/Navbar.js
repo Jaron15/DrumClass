@@ -138,7 +138,7 @@ function Navbar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
   return (
     <Box sx={{ display: 'flex', flexGrow: 1 }}>
-      <AppBar position="static" style={{backgroundColor: '#ffffff', height: 80, }}>
+      <AppBar position="static" style={{backgroundColor: '#ffffff', height: {xs:70, md: 80} }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -182,7 +182,7 @@ function Navbar(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block' },
+            display: { xs: 'block', md: 'inline' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >

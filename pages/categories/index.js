@@ -13,7 +13,7 @@ export default function CategoryPage() {
     
 return (
     <CategoryProvider>
-    <Box sx={{margin: 'auto', width: '80%'}}>
+    <Box sx={{ width: '100%'}}>
     <Typography
     variant='h4'
     sx={{fontFamily: "Rock Salt", textAlign: 'center', margin: '3vh' }}
