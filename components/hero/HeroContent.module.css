@@ -24,7 +24,7 @@
     display: inline-flex;
     align-items: center; 
     box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;
-    font-family: 'Damion', cursive;
+    font-weight: bold;
     border: none;
     font-size: 16px;
     color: rgb(197, 197, 197);
@@ -70,7 +70,7 @@
     width: 70vh;
     color: #e6e6e6;
     text-shadow:1px 1px 10px var(--glow-dim), 1px 1px 10px var(--glow-dim);
-    font-style: italic;
+    
   
 }
 

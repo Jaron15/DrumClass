@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import CategoryContext from '../../../store/category-context';
 import {useVideos} from '../../../hooks/useRequest';
 import VideoList from '../../../components/list/VideoList';
@@ -39,12 +39,11 @@ function index(props) {
  
   return (
     
-    <Container>
+    <Fragment>
         {videosList.length > 0 &&
         <ListGroup allVideos={videosList}/>
-        
     }
-   </Container>
+   </Fragment>
    )
 }
 export async function getServerSideProps(context) {

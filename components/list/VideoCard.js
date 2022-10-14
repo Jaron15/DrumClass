@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import {useRouter} from 'next/router';
+import {isMobile} from 'react-device-detect';
  
 export default function VideoCard(props) {
     const cardStyle = {
@@ -17,22 +18,32 @@ export default function VideoCard(props) {
         paddingBottom: '1vh',
         objectFit: 'contain'
       };
+    const mobileCardStyle = {
+        display: "flex",
+        flexDirection: 'column',
+        transitionDuration: "0.3s",
+        height: "100%",
+        width: "100%",
+        
+        paddingBottom: '1vh',
+        objectFit: 'contain'
+      };
      const router = useRouter();
      const videoSelectHandler = () => {
       router.push('/categories/'+ props.category + '/' + props.id);
      }
      
   return (
-    <Card  style={cardStyle}>
-      <CardActionArea onClick={videoSelectHandler}>
+    <Card  style={isMobile ? mobileCardStyle : cardStyle}>
+      <CardActionArea sx={{display: 'flex',flexDirection: 'column', justifyContent: 'left'}} onClick={videoSelectHandler}>
         <CardMedia
           component="img"
-          height="160"
+          height={isMobile ? '220' : '160'}
           image={props.image}
           alt={props.description}
           sx={{objectFit: 'cover', width: '100%', margin: 'none'}}
         />
-        <CardContent sx={{ p:1, pl:2, objectFit: 'contain'}}>
+        <CardContent sx={{ p:1, align: 'left', width: '100%', objectFit: 'contain'}}>
           <Typography sx={{fontWeight:'bold', lineHeight: 1, marginTop: '.5vh'}} marginBottom='0px' gutterBottom component="div">
             {props.title}
           </Typography>

@@ -14,9 +14,7 @@ const HomePage = (props) => {
   return (
     <Fragment>
     <Hero />
-    <Container>
     <ListGroup allVideos={allVideos} />
-   </Container>
     </Fragment>
   )
 }

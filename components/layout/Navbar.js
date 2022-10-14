@@ -91,27 +91,27 @@ function Navbar(props) {
       </Typography>
       <Divider />
       <List sx={{overflow: 'hidden'}}>
-          <ListItem key='Home' disablePadding className={styles.slideLeft}>
+          <ListItem key='Home'sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} disablePadding className={styles.slideLeft}>
             <Link href='/'>
-            <ListItemButton sx={{ textAlign: 'center', margin: '1vh'}}>
-            <Typography sx={{fontWeight: 'bold', fontSize: '2.25vh', textAlign: 'center', width: '100%'}} >
+            <ListItemButton sx={{ textAlign: 'center'}}>
+            <Typography sx={{fontWeight: 'bold', fontSize: {xs:'2.75vh',md:'2.25vh'}, textAlign: 'center', width: '85%'}} >
               Home</Typography>
             </ListItemButton>
             </Link>
           </ListItem>
 
-          <ListItem key='About' disablePadding className={styles.slideLeftMid}>
+          <ListItem key='About' disablePadding sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} className={styles.slideLeftMid}>
           <Link href='/categories'>
-            <ListItemButton sx={{ textAlign: 'center', margin: '1vh'}}>
-            <Typography sx={{fontWeight: 'bold', fontSize: '2.25vh', textAlign: 'center', width: '100%'}} >
+            <ListItemButton sx={{ textAlign: 'center'}}>
+            <Typography sx={{fontWeight: 'bold', fontSize: {xs:'2.75vh',md:'2.25vh'}, textAlign: 'center', width: '85%'}} >
               Categories</Typography>
             </ListItemButton>
             </Link>
           </ListItem>
           
-          <ListItem key='Contact' disablePadding className={styles.slideLeftLow}>
-            <ListItemButton sx={{ textAlign: 'center', margin: '1vh' }}>
-            <Typography sx={{fontWeight: 'bold', fontSize: '2.25vh', textAlign: 'center', width: '100%'}} >
+          <ListItem key='Contact' sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} disablePadding className={styles.slideLeftLow}>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+            <Typography sx={{fontWeight: 'bold', fontSize: {xs:'2.75vh',md:'2.25vh'}, textAlign: 'center', width: '85%'}} >
               About</Typography>
             </ListItemButton>
           </ListItem>
@@ -161,7 +161,7 @@ function Navbar(props) {
           >
             <img src="/DrumClassLogo.png" height='55px' width="55px"/>
           </Typography>
-          <Search style={{borderColor: 'black', borderWidth: '2px', borderStyle:  'solid', color: 'black'}}>
+          <Search style={{borderColor: 'black', borderWidth: '2px', borderStyle:  'solid', color: 'black', marginLeft: 15}}>
             <SearchIconWrapper >
               <SearchIcon />
             </SearchIconWrapper>

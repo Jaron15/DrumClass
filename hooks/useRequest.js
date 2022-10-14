@@ -19,7 +19,7 @@ export const useVideos = () => {
     }
   const json = await response.json();
   const dataBefore = json.items;
-  const data = dataBefore.map(vid => ({...vid, catName: term  + ' Lessons',}))
+  const data = dataBefore.map(vid => ({...vid, catName: term  + ' Drum Lessons',}))
   // console.log(dataBefore);
   return data
     }
