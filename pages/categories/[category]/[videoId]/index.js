@@ -10,15 +10,20 @@ import Paper from '@mui/material/Paper';
 import {isMobile} from 'react-device-detect';
 import VideoList from '../../../../components/list/VideoList';
 import MobileList from '../../../../components/list/mobileList';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { Router, useRouter } from 'next/router';
 
 function SingleView(props) {
+  console.log(props.video[0].snippet.channelId)
   const [mobileView, setMobileView] = useState(false)
   useEffect(() => { 
     if(isMobile) {
       setMobileView(true)
     }}, [])
-console.log(props.video[0].snippet.title);
+const channelLink = ('https://www.youtube.com/channel/' + props.video[0].snippet.channelId)
 const videoLink = ('https://www.youtube.com/embed/' + props.video[0].id);
+const router = useRouter();
+
 if (mobileView) {
   return (
     <Fragment>
@@ -37,8 +42,12 @@ if (mobileView) {
  
    
       <Divider />
-    <Typography sx={{textAlign: 'start', alignItems: 'center', fontWeight: 'bold', width: '100%', paddingLeft: 2   }}>{props.video[0].snippet.channelTitle}</Typography>
+      <a href={channelLink} style={{color: 'inherit', textDecoration: 'inherit'}}>
+        <Box>
+    <Typography sx={{textAlign: 'start', alignItems: 'center', fontWeight: 'bold', width: '100%', paddingLeft: 2,  }}>{props.video[0].snippet.channelTitle}</Typography>
     <Typography sx={{textAlign: 'start', textDecoration: 'underline', fontSize: '1.5vh', width: '100%',paddingLeft: 2, marginBottom: .5 }}>Visit Channel</Typography>
+    </Box>
+    </a>
 
 
     <Accordion sx={{borderTop: 0,width: '100%', textAlign: 'start',  }}>
@@ -62,6 +71,11 @@ if (mobileView) {
 
   return (
     <Fragment>
+      <ArrowBackIosIcon 
+      onClick={() => router.back()}
+      sx={{margin: 3, marginLeft: 10, fontSize: 50,'&:hover': {
+        cursor: "pointer",
+      },}}/>
       <Typography variant='h4' sx={{
       fontFamily: "Rock Salt",
       fontWeight:'bold',
