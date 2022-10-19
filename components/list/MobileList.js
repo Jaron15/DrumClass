@@ -9,7 +9,7 @@ const MobileList = (props) => {
     
     return (
       <Fragment>
-            <Stack>
+            <Stack sx={{alignItems: 'center', margin: {xs: 'none',md:'auto'}}}>
             {videos.map((video, index) => (
       <VideoCard
         data-value={index+1}

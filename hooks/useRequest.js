@@ -8,8 +8,8 @@ export const useVideos = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const key = process.env.NEXT_PUBLIC_API_KEY;
-  const sendRequest = useCallback(async (term) => {
-    const url = ('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + term + 'drum lesson&maxResults=5&chart=mostPopular&key=' + key)
+  const sendRequest = useCallback(async (term, amount) => {
+    const url = ('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + term + 'drum lesson&maxResults=' + amount +'&chart=mostPopular&key=' + key)
     setIsLoading(true);
     setError(null);
     try{

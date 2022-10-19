@@ -22,7 +22,7 @@ function index(props) {
         let mounted = true
         let allVideos = [];
         subCategories.map((subCat) => {
-            sendRequest(subCat).then(data => {
+            sendRequest(subCat, 5).then(data => {
                 if (mounted) {
                     allVideos.push(data)
                 }

@@ -21,6 +21,7 @@ import styles from './Navbar.module.css';
 import PropTypes from 'prop-types';
 import Link from 'next/link'
 import {useRouter} from 'next/router';
+import { useRef } from 'react';
 
 
 const drawerWidth = 240;
@@ -73,6 +74,7 @@ function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const searchRef = useRef()
   const router = useRouter();
   const goHome = () => {
     router.push('/')
@@ -81,6 +83,7 @@ function Navbar(props) {
     console.log('clicked');
     setMobileOpen(!mobileOpen);
   };
+
   const drawer = (
      
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -159,15 +162,26 @@ function Navbar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <img src="/DrumClassLogo.png" height='55px' width="55px"/>
+            <img onClick={goHome} style={{cursor: 'pointer'}}  src="/DrumClassLogo.png" height='55px' width="55px"/>
           </Typography>
-          <Search style={{borderColor: 'black', borderWidth: '2px', borderStyle:  'solid', color: 'black', marginLeft: 15}}>
+          <Search 
+          style={{borderColor: 'black', borderWidth: '2px', borderStyle:  'solid', color: 'black', marginLeft: 15}}>
             <SearchIconWrapper >
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                const term = e.target.value;
+                console.log(term)
+                router.push('/search/' + term)
+                searchRef.current.value = '';
+              }
+            }}
+  
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              inputRef={searchRef}
             />
           </Search>
         </Toolbar>
