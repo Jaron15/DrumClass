@@ -12,6 +12,7 @@ const MobileList = (props) => {
             <Stack sx={{alignItems: 'center', margin: {xs: 'none',md:'auto'}}}>
             {videos.map((video, index) => (
       <VideoCard
+      sx={{width: '100%'}}
         data-value={index+1}
         key={video.id.videoId}
         id={video.id.videoId}

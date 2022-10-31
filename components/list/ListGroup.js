@@ -48,7 +48,7 @@ import MobileList from './mobileList';
         setMobileView(true)
         const videos = allVideos.find(vids => vids[0].catName === category)
         setSelectedVideos(videos)
-      }}, [category])
+      }}, [category, isMobile])
       
       //function to handle changing categories
       const catSelectHandler = (props) => {

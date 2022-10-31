@@ -32,10 +32,39 @@ export const useVideos = () => {
   // console.log(dataBefore);
   // const data = dataBefore.map(vid => ({...vid, catName: term  + 'Lessons'}))
 }, []);
+  const favoritesRequest = useCallback(async (id) => {
+    const url = ('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=' + id + '&key=' + key)
+    setIsLoading(true);
+    setError(null);
+    try{
+    const response =  await fetch(url);
+    if (!response.ok) {
+      throw new Error('Request failed!');
+    }
+  const json = await response.json();
+  const dataBefore = json.items;
+  console.log(dataBefore);
+  const data = dataBefore.map(vid => ({...vid, catName: dataBefore[0].snippet.title,}))
+  
+  // console.log(dataBefore);
+  return data
+    }
+    catch (err) {
+      setError (err.message || 'Something went wrong!');
+    }
+    setIsLoading(false);
+  // const result = useSWR(url, fetcher)
+  // const dataBefore = result.data;
+  // console.log(dataBefore);
+  // const data = dataBefore.map(vid => ({...vid, catName: term  + 'Lessons'}))
+}, []);
+
+
 return {
   isLoading,
   error,
-  sendRequest
+  sendRequest,
+  favoritesRequest
 }
 }
 

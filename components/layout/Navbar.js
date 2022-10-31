@@ -25,7 +25,7 @@ import { useRef } from 'react';
 
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Categories', 'About'];
+const navItems = ['Home', 'Categories', 'Favorites', 'About'];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -103,7 +103,7 @@ function Navbar(props) {
             </Link>
           </ListItem>
 
-          <ListItem key='About' disablePadding sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} className={styles.slideLeftMid}>
+          <ListItem key='categories' disablePadding sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} className={styles.slideLeftMid}>
           <Link href='/categories'>
             <ListItemButton sx={{ textAlign: 'center'}}>
             <Typography sx={{fontWeight: 'bold', fontSize: {xs:'2.75vh',md:'2.25vh'}, textAlign: 'center', width: '85%'}} >
@@ -111,8 +111,16 @@ function Navbar(props) {
             </ListItemButton>
             </Link>
           </ListItem>
+          <ListItem key='favorites' disablePadding sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} className={styles.slideLeftMid2}>
+          <Link href='/favorites'>
+            <ListItemButton sx={{ textAlign: 'center'}}>
+            <Typography sx={{fontWeight: 'bold', fontSize: {xs:'2.75vh',md:'2.25vh'}, textAlign: 'center', width: '85%'}} >
+            Favorites</Typography>
+            </ListItemButton>
+            </Link>
+          </ListItem>
           
-          <ListItem key='Contact' sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} disablePadding className={styles.slideLeftLow}>
+          <ListItem key='About' sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} disablePadding className={styles.slideLeftLow}>
             <ListItemButton sx={{ textAlign: 'center' }}>
             <Typography sx={{fontWeight: 'bold', fontSize: {xs:'2.75vh',md:'2.25vh'}, textAlign: 'center', width: '85%'}} >
               About</Typography>

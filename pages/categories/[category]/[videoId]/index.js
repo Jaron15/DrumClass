@@ -12,17 +12,51 @@ import VideoList from '../../../../components/list/VideoList';
 import MobileList from '../../../../components/list/mobileList';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { Router, useRouter } from 'next/router';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 function SingleView(props) {
-  console.log(props.video[0].snippet.channelId)
+  const vidId = props.video[0].id;
+  const [favorite, setFavorite] = useState(false)
   const [mobileView, setMobileView] = useState(false)
+  const { query, push, router } = useRouter();
+  const {id} = query
+
   useEffect(() => { 
+    const favorites = JSON.parse(localStorage.getItem('favorites'))
+    if (favorites) {
+    if (favorites.includes(vidId)) {
+      setFavorite(true)
+    }
+    else  {
+      setFavorite(false)
+    }
+}
     if(isMobile) {
       setMobileView(true)
-    }}, [])
+    }}, [id,push])
 const channelLink = ('https://www.youtube.com/channel/' + props.video[0].snippet.channelId)
-const videoLink = ('https://www.youtube.com/embed/' + props.video[0].id);
-const router = useRouter();
+const videoLink = ('https://www.youtube.com/embed/' + vidId);
+// const router = useRouter();
+
+function addFavoriteHandler() {
+  if (localStorage.getItem('favorites') === null) {
+    localStorage.setItem('favorites', '[]')
+  } 
+  var oldData = JSON.parse(localStorage.getItem('favorites'));
+  oldData.push(vidId);
+
+  localStorage.setItem('favorites', JSON.stringify(oldData));
+  setFavorite(true)
+}
+function removeHandler() {
+  const favorites = JSON.parse(localStorage.getItem('favorites'))
+  const newArray = favorites.filter((vid) => {
+    return (vid !== vidId)
+  })
+  localStorage.setItem('favorites', JSON.stringify(newArray))
+  setFavorite(false)
+}
 
 if (mobileView) {
   return (
@@ -37,17 +71,22 @@ if (mobileView) {
         <Box sx={{width: '100%', height: '35vh'}}>
     <iframe src={videoLink} frameBorder='0' width='100%' height='100%' allowFullScreen></iframe>
     </Box>
-
-    <Typography sx={{textAlign: 'start',fontSize: '2.5vh', fontWeight: 'bold', width: '100%', padding: .5, paddingLeft: 2}}>{props.video[0].snippet.title}</Typography>
- 
-   
+      <Box sx={{display: 'flex'}}>
+    <Typography sx={{textAlign: 'start',fontSize: '2.5vh', fontWeight: 'bold', width: '100%', padding: .5, paddingLeft: 2}}>{props.video[0].snippet.title}  </Typography>
+    <Box style={{height: '100%', display: 'flex', flexDirection: 'column', alignSelf: 'center',justifyContent: 'center'}}>
+    {!favorite ? <AddIcon onClick={addFavoriteHandler} sx={{fontSize: '4vh',alignItems: 'center', marginRight: '2vh' }}/>
+    : <RemoveIcon onClick={removeHandler} sx={{fontSize: '4vh',alignItems: 'center', marginRight: '2vh' }}/>
+    }
+    </Box>
+    </Box>
       <Divider />
-      <a href={channelLink} style={{color: 'inherit', textDecoration: 'inherit'}}>
+      
         <Box>
+        <a href={channelLink} style={{color: 'inherit', textDecoration: 'inherit'}}>
     <Typography sx={{textAlign: 'start', alignItems: 'center', fontWeight: 'bold', width: '100%', paddingLeft: 2,  }}>{props.video[0].snippet.channelTitle}</Typography>
     <Typography sx={{textAlign: 'start', textDecoration: 'underline', fontSize: '1.5vh', width: '100%',paddingLeft: 2, marginBottom: .5 }}>Visit Channel</Typography>
-    </Box>
     </a>
+    </Box>
 
 
     <Accordion sx={{borderTop: 0,width: '100%', textAlign: 'start',  }}>
@@ -82,6 +121,7 @@ if (mobileView) {
       marginTop:'2vh', 
       marginBottom:'2vh',
       textAlign: 'center'}} >{props.video[0].snippet.title}</Typography>
+
       <Paper elevation={5} sx={{
       alignItems: "center",
       justifyContent: 'center',
@@ -90,8 +130,18 @@ if (mobileView) {
       margin: 'auto'
       }}>
     <iframe src={videoLink} frameBorder='0' width='100%' height='400' allowFullScreen></iframe>
+    <Box sx={{display: 'flex'}}>
+      <Box sx={{width: '50%'}}>
     <Typography sx={{textAlign: 'start', fontWeight: 'bold', marginLeft: '1.5vh'}}>{props.video[0].snippet.channelTitle}</Typography>
     <Typography sx={{textAlign: 'start', textDecoration: 'underline', fontSize: '1.2vh', marginTop: '-.8vh', marginLeft: '1.5vh'}}>Visit Channel</Typography>
+    </Box>
+       <Box sx={{width: '50%', display: 'flex', justifyContent: 'end'}}>
+    {!favorite ? <AddIcon onClick={addFavoriteHandler} sx={{fontSize: '4vh',alignItems: 'center', marginRight: '2vh' }}/>
+    : <RemoveIcon onClick={removeHandler} sx={{fontSize: '4vh',alignItems: 'center', marginRight: '2vh' }}/>
+    }
+ </Box>
+    </Box>
+    
     <Accordion sx={{borderTop: 0,width: '80vh', textAlign: 'center', margin: 'auto'}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
