@@ -12,7 +12,6 @@ import { useRouter } from 'next/router';
 
 
 
-
 function index() {
   const router = useRouter();
   const catCtx = useContext(CategoryContext)
