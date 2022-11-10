@@ -25,7 +25,7 @@ const CategoryContext = React.createContext({
 ],
 
 questions: [ {
-    question: 'have you been through any lessons at all? Online or in person?',
+    question: 'Have you been through any lessons at all? Online or in person?',
     category: 'Beginner',
     About: "Luckily, there are plenty of videos made by many creators for someone exactly where you're at. Select any beginner level video and it should give you a good place to start."
 },
