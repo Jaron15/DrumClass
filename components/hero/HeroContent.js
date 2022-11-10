@@ -1,11 +1,16 @@
+import { useRouter } from 'next/router';
 import React from 'react'
 import styles from './HeroContent.module.css'
 
 const HeroContent = () => {
+  const router = useRouter();
+  const testClickHandler = () => {
+    router.push('/recommendation')
+  }
   return (
     <div className={styles.heroContent}>
         <h1 className={styles.heroHeader}>Feeling Lost?</h1>
-        <btn className={styles.heroBtn}>Click Me</btn> 
+        <btn className={styles.heroBtn} onClick={testClickHandler}>Click Me</btn> 
         <p className={styles.btnInfo}>
         
         A place to practice for any skill level. Look through the lessons 

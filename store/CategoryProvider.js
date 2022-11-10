@@ -1,7 +1,5 @@
 import CategoryContext from './category-context';
 
-
-
 const CategoryProvider = props => {
  
 

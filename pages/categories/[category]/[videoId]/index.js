@@ -112,7 +112,7 @@ function removeHandler() {
     <Fade in={open}>
       <Box sx={{
     position: 'absolute',
-    top: {xs: '13%',sm: '15%'},
+    top: {xs: '13%',sm: '13%'},
     left: '50%',
     transform: 'translate(-50%, -50%)',}}>
       <MyModal sx={{width: {xs: 300, sm: 400}}}>
@@ -124,16 +124,6 @@ function removeHandler() {
     </Fade>
   </Modal>
 </div>
-
-const goBack = () => {
-  const back = router.back;
-  if (back === undefined) {
-    router.replace('/')
-  }
-  else {
-  router.back()
-}
-}
 
 if (mobileView) {
   return (
@@ -192,15 +182,15 @@ if (mobileView) {
     <Fragment>
       {FavoritesPopup}
 
-      <ArrowBackIosIcon 
-      onClick={goBack}
+      {/* <ArrowBackIosIcon 
+      onClick={() => router.back()}
       sx={{margin: 3, marginLeft: 10, fontSize: 50,'&:hover': {
         cursor: "pointer",
-      },}}/>
+      },}}/> */}
       <Typography variant='h4' sx={{
       fontFamily: "Rock Salt",
       fontWeight:'bold',
-      marginTop:'2vh', 
+      marginTop:'9vh', 
       marginBottom:'2vh',
       textAlign: 'center'}} >{props.video[0].snippet.title}</Typography>
 
