@@ -20,7 +20,7 @@ const HomePage = (props) => {
 }
 
 export async function getStaticProps() {
-  const key  = process.env.API_KEY
+  const key  = process.env.NEXT_PUBLIC_API_KEY
   const bResponse = await fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q=Beginner drum lesson&maxResults=5&chart=mostPopular&key=' +  key)
     const bJson = await bResponse.json();
     const bDataBefore = bJson.items;

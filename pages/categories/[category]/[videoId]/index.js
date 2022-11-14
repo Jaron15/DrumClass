@@ -246,7 +246,7 @@ if (mobileView) {
 export async function getServerSideProps(context) {
     const videoId = context.params.videoId;
     const videoCat = context.params.category;
-    const key  = process.env.API_KEY;
+    const key  = process.env.NEXT_PUBLIC_API_KEY;
     const videoRes = await fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=' + videoId + '&key=' + key)
     const videoJson = await videoRes.json();
     const videoData = videoJson.items;
