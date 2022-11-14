@@ -3,7 +3,7 @@ import {isMobile} from 'react-device-detect';
 import { Button, Container, Box } from '@material-ui/core';
 import VideoList from './VideoList';
 import Typography from '@mui/material/Typography';
-import MobileList from './mobileList';
+import MobileList from './MobileList';
 
 
 

@@ -1,7 +1,7 @@
 import { CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { Fragment, useEffect, useState } from 'react'
-import MobileList from '../../../components/list/mobileList';
+import MobileList from '../../../components/list/MobileList';
 import SearchResults from '../../../components/list/SearchResults';
 import VideoList from '../../../components/list/VideoList';
 import {useVideos} from '../../../hooks/useRequest';

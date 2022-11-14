@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useContext, useState } from 'react'
 import { useVideos } from '../../../hooks/useRequest';
 import { Box, Typography, CircularProgress } from '@mui/material';
 import SearchResults from '../../../components/list/SearchResults';
-import MobileList from '../../../components/list/mobileList';
+import MobileList from '../../../components/list/MobileList';
 import CategoryContext from '../../../store/category-context';
 import { QuestionAnswerSharp } from '@material-ui/icons';
 function index(props) {

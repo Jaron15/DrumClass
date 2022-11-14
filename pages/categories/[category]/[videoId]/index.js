@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Paper from '@mui/material/Paper';
 import {isMobile} from 'react-device-detect';
 import VideoList from '../../../../components/list/VideoList';
-import MobileList from '../../../../components/list/mobileList';
+import MobileList from '../../../../components/list/MobileList';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { Router, useRouter } from 'next/router';
 import Backdrop from '@mui/material/Backdrop';
