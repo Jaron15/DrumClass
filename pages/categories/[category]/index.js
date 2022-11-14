@@ -3,7 +3,7 @@ import CategoryContext from '../../../store/category-context';
 import {useVideos} from '../../../hooks/useRequest';
 import VideoList from '../../../components/list/VideoList';
 import ListGroup from '../../../components/list/ListGroup';
-import { Box, Container, Typography } from '@material-ui/core';
+import { Box, CircularProgress, Container, Typography } from '@material-ui/core';
 import { TrendingUp } from '@material-ui/icons';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
@@ -17,7 +17,7 @@ function index(props) {
     const category = categories.find(category => category.catName === chosenCat)
     const subCategories = category.subCats;
     const {isLoading, error, sendRequest} = useVideos();
-    
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         let mounted = true
         let allVideos = [];
@@ -29,14 +29,14 @@ function index(props) {
             })
         })
         setTimeout(() => {
+            setLoading(false)
             setVideosList(allVideos)
           }, 1000)
-        // console.log(allVideos);
+
         return () => mounted = false;
         }, [])
-        
-        console.log(videosList);
-        console.log(videosList.length);
+
+         
  
   return (
     
@@ -46,9 +46,13 @@ function index(props) {
                    
             </Box>
         </Box> */}
+        {loading ? <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress /></Box>
+ :        <Box>
         {videosList.length > 0 &&
         <ListGroup allVideos={videosList}/>
     }
+    </Box>
+   }
    </Fragment>
    )
 }

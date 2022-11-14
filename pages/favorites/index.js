@@ -7,6 +7,8 @@ import VideoList from '../../components/list/VideoList';
 import {useVideos} from '../../hooks/useRequest';
 import {isMobile} from 'react-device-detect';
 import VideoCard from '../../components/list/VideoCard';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 function Favorites() {
@@ -34,14 +36,9 @@ function Favorites() {
             setVideosList(allVideos);
         }, 1500)
     }
-        // console.log('====================================');
-        // console.log(videosList);
-        // console.log('====================================');
+
         return () => mounted = false;
     }, [])
-    useEffect(() => {
-        console.log(videosList);
-    }, [videosList])
 
 
     return (
@@ -63,8 +60,8 @@ function Favorites() {
   />
 ))}
         </Stack> 
-        : <Box sx={{ height: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <Typography sx={{textAlign: 'center', fontWeight: 'bold', fontFamily: "Rock Salt", fontSize: '5vh'}}> No Favorites Yet</Typography>
+        : <Box sx={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            { !isLoading ? <Typography sx={{textAlign: 'center', fontWeight: 'bold', fontFamily: "Rock Salt", fontSize: '5vh'}}> No Favorites Yet</Typography> : <CircularProgress />}
                 </Box>}
   </Fragment>
     )

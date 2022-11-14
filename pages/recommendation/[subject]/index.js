@@ -1,7 +1,7 @@
 import {isMobile} from 'react-device-detect';
 import React, { Fragment, useEffect, useContext, useState } from 'react'
 import { useVideos } from '../../../hooks/useRequest';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, CircularProgress } from '@mui/material';
 import SearchResults from '../../../components/list/SearchResults';
 import MobileList from '../../../components/list/mobileList';
 import CategoryContext from '../../../store/category-context';
@@ -10,12 +10,13 @@ function index(props) {
   const subject = props.subject
   const catCtx = useContext(CategoryContext)
     const questions = catCtx.questions;
-    console.log(questions);
+    
   const info = questions.filter(question => question.category === subject)
- console.log(info[0].About);
+ 
   const [videosList, setVideosList] = useState([]);
   const {isLoading, error, sendRequest} = useVideos();
   const [mobileView, setMobileView] = useState(false)
+  const [loading, setLoading]  = useState(true)
   useEffect(() => {
       if (isMobile) {
           setMobileView(true)
@@ -26,6 +27,7 @@ function index(props) {
           allVideos = data;
       } );
       setTimeout(() => {
+          setLoading(false)
           setVideosList(allVideos)
       }, 1000)
       return () => mounted = false;
@@ -34,7 +36,9 @@ function index(props) {
 
   if (mobileView) {
     return (
-        <Fragment>
+      <Fragment>
+      {loading ? <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vw'}}><CircularProgress /></Box> :
+      <Box>
           <Typography
             variant="h4"
              sx={{
@@ -50,11 +54,15 @@ function index(props) {
       </Typography>
       </Box>
             <MobileList videos={videosList} />
+            </Box>
+    }
         </Fragment>
     )
 }
     return (
         <Fragment>
+          {loading ? <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress /></Box> :
+           <Box>
             <Typography
             variant="h4"
              sx={{
@@ -72,6 +80,8 @@ function index(props) {
             <Box sx={{ py: 5, height: '100%', width: '90%', margin: 'auto'}}>
             <SearchResults videos={videosList} />      
             </Box>
+            </Box>
+}
         </Fragment>
     )
 }

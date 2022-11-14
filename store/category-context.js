@@ -21,6 +21,30 @@ const CategoryContext = React.createContext({
     catName: 'fills',
     subCats: ['beginner fills', 'intermediate fills', 'Advanced fills', ]
     },
+    {
+    catName: 'genres',
+    subCats: ['rock', 'metal', 'jazz', 'blues' ]
+    },
+    {
+    catName: 'theory',
+    subCats: ['Reading music', 'time signatures', 'double time' ]
+    },
+    {
+    catName: 'flams',
+    subCats: ['flams', 'flam accent', 'flam tap' ]
+    },
+    {
+    catName: 'groupings',
+    subCats: ['4 note groupings', 'combining groupings', 'groupings' ]
+    },
+    {
+    catName: 'odd timing',
+    subCats: ['odd time', '5/4', '7/4' ]
+    },
+    {
+    catName: 'advanced rudiments',
+    subCats: ['flam paradiddle', 'dragadiddle', 'flam paradiddle-diddle' ]
+    },
 
 ],
 

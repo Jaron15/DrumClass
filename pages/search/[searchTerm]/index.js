@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { Fragment, useEffect, useState } from 'react'
 import MobileList from '../../../components/list/mobileList';
@@ -11,6 +11,7 @@ function index(props) {
     const [videosList, setVideosList] = useState([]);
     const {isLoading, error, sendRequest} = useVideos();
     const [mobileView, setMobileView] = useState(false)
+    const [loading, setLoading] = useState(true);
     const category = props.category
     useEffect(() => {
         if (isMobile) {
@@ -22,23 +23,27 @@ function index(props) {
             allVideos = data;
         } );
         setTimeout(() => {
+            setLoading(false)
             setVideosList(allVideos)
         }, 1000)
         return () => mounted = false;
     }, [category])
-    console.log(videosList);
+    
 
     
     if (mobileView) {
         return (
             <Fragment>
-                <MobileList videos={videosList} />
+                 {loading ? <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vw'}}><CircularProgress /></Box>
+              : <Box> <MobileList videos={videosList} /> </Box>}
             </Fragment>
         )
     }
         return (
             <Fragment>
-                <Typography
+                {loading ? <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress /></Box>
+                 : <Box>
+                     <Typography
                 variant="h4"
                  sx={{
             textAlign: "center",
@@ -51,6 +56,7 @@ function index(props) {
                 <Box sx={{ py: 5, height: '100%', width: '90%', margin: 'auto'}}>
                 <SearchResults videos={videosList} />      
                 </Box>
+                </Box> }
             </Fragment>
         )
 }

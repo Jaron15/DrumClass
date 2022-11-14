@@ -36,6 +36,7 @@ function index() {
       setTestActive(false)
     }
     else if (value === 'No') {
+      setTestActive(false)
       const subject = questions[questionNumber].category
       router.push('/recommendation/' + subject)
     }
@@ -45,21 +46,51 @@ function index() {
     setValue('');
   }
   const back = () => {
+    if (questionNumber === 0) {
+      setTestActive(false)
+      let number = questionNumber - 1;
+    setQuestionNumber(number)
+    setValue('');
+    }
     let number = questionNumber -1;
     setQuestionNumber(number)
   }
-  console.log(questionNumber)
+  
 
+  const selectedButtonStyle = {
+    borderRadius: 35,
+        backgroundColor: "#444",
+        fontSize: "1.25vh",
+        marginTop: 10,
+        marginBottom: 10,
+        padding: 13,
+        fontWeight: 'bold',
+        width: '11vh',
+        color: 'white',
+        boxShadow:'1px 1px 5px rgba(63, 180, 254, 0.6), 1px 1px 5px rgba(63, 180, 254, 0.6)'
+  }
+  const startButtonStyle = {
+    borderRadius: 35,
+        backgroundColor: "#444",
+        fontSize: "1.25vh",
+        marginTop: 10,
+        marginBottom: 10,
+        padding: 13,
+        fontWeight: 'bold',
+        width: '50%',
+        color: 'white',
+        boxShadow:'1px 1px 5px rgba(63, 180, 254, 0.6), 1px 1px 5px rgba(63, 180, 254, 0.6)'
+  }
 const intro = (<Box sx={{display: 'flex', flexDirection: 'column', justifyContent: "center"}}>
 <Typography sx={{textAlign: 'center', fontWeight: 'bold', fontSize: '3vh', margin: 'auto', width: '70%'}}>This test will give you some direction if you are feeling lost. click the button below to get started.</Typography>
 <Box sx={{display: 'flex', justifyContent: 'center', marginTop: '10vh'}}>
-<Button variant="contained"  onClick={next} sx={{width: "50%"}}>Get started</Button>
+<Button style={startButtonStyle} variant="contained"  onClick={next}>Get started</Button>
 </Box>
 </Box> )
 
 const outro = (<Box sx={{mx: {xs:'1vh', md: '5vh'}, }}>
 <Typography sx={{fontWeight: 'bold', fontSize: {md: '3vh'}}}>
-  It looks like you have a pretty good foundation on the drums. Everyone learns differently and it depends on what kind of drummer you want to be, so although I can't give specific recommendations suited to every individual, learning different things and practicing is only going to help. Look through any of the categories on the categories page or search for a specfic topic youre interested in in the search bar. If you feel like you still need more guidance check out possibly getting a membership to one of the thorough course websites like Drumeo or Drum Beats Online (DBO Academy). Or look around near you for in person lessons. 
+It looks like you have a pretty good foundation on the drums. Everyone learns differently and it depends on what kind of drummer you want to be, so although I can't give specific recommendations suited to every individual, learning different things and practicing is only going to help. Look through any of the categories on the categories page or search for a specific topic you're interested in in the search bar. If you feel like you still need more guidance, check out possibly getting a membership to one of the thorough course websites like Drumeo or Drum Beats Online (DBO Academy). Or look around near you for in person lessons.
   </Typography> 
 
   <Box sx={{display: 'flex', justifyContent: 'center', marginTop: '5vh'}}>
@@ -95,8 +126,8 @@ const outro = (<Box sx={{mx: {xs:'1vh', md: '5vh'}, }}>
     </Box>
 
     <Box sx={{width: {xs:"100%", md:  '40%'}, height:'100%', marginTop: '5vh', display: 'flex', justifyContent: 'space-between', alignItems: 'end', }}>
-    <Button variant="contained" onClick={back} sx={{marginLeft: '2vh'}}>Back</Button>
-    <Button variant="contained"  onClick={next} sx={{marginRight: '2vh'}}>Next</Button>
+    <Button style={selectedButtonStyle} variant="contained" onClick={back} sx={{marginLeft: '2vh'}}>Back</Button>
+    <Button style={selectedButtonStyle} variant="contained"  onClick={next} sx={{marginRight: '2vh'}}>Next</Button>
     </Box>
     </Fragment>)
     }

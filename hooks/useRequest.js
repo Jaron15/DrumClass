@@ -20,17 +20,13 @@ export const useVideos = () => {
   const json = await response.json();
   const dataBefore = json.items;
   const data = dataBefore.map(vid => ({...vid, catName: term  + ' Drum Lessons',}))
-  // console.log(dataBefore);
+  
   return data
     }
     catch (err) {
       setError (err.message || 'Something went wrong!');
     }
     setIsLoading(false);
-  // const result = useSWR(url, fetcher)
-  // const dataBefore = result.data;
-  // console.log(dataBefore);
-  // const data = dataBefore.map(vid => ({...vid, catName: term  + 'Lessons'}))
 }, []);
   const favoritesRequest = useCallback(async (id) => {
     const url = ('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=' + id + '&key=' + key)
@@ -43,20 +39,17 @@ export const useVideos = () => {
     }
   const json = await response.json();
   const dataBefore = json.items;
-  console.log(dataBefore);
+  
   const data = dataBefore.map(vid => ({...vid, catName: dataBefore[0].snippet.title,}))
   
-  // console.log(dataBefore);
+  
   return data
     }
     catch (err) {
       setError (err.message || 'Something went wrong!');
     }
     setIsLoading(false);
-  // const result = useSWR(url, fetcher)
-  // const dataBefore = result.data;
-  // console.log(dataBefore);
-  // const data = dataBefore.map(vid => ({...vid, catName: term  + 'Lessons'}))
+  
 }, []);
 
 

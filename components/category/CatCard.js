@@ -13,18 +13,24 @@ const router = useRouter();
     router.push('/categories/' + props.name)
   }
   return (
-    <Card sx={{ maxWidth: {xs:150, md:345}, boxShadow: 5, margin: {xs:2, md:3} }}>
-      <CardActionArea onClick={() => catSelectHandler(name)}>
-        <CardMedia
+    <Card sx={{ width: {xs:160, md:345}, height: {xs:120, md:170}, boxShadow: 6, margin: {xs:2, md:3}, borderRadius: 3 }}>
+      <CardActionArea sx={{height: '100%'}} onClick={() => catSelectHandler(name)}>
+        {/* <CardMedia
           component="img"
           height="100%"
-          image="https://media.istockphoto.com/photos/white-wrinkle-paper-texture-background-picture-id672298630?b=1&k=20&m=672298630&s=170667a&w=0&h=pXZ_XVHseb5RY49K3N8PlzImUDyhShLMyCx91Q0GIdg="
-          alt="green iguana"
-        />
-        <Box sx={{position: 'absolute', top:'0%', height: '100%', width: '100%',
+          // image="https://media.istockphoto.com/photos/white-wrinkle-paper-texture-background-picture-id672298630?b=1&k=20&m=672298630&s=170667a&w=0&h=pXZ_XVHseb5RY49K3N8PlzImUDyhShLMyCx91Q0GIdg="
+          alt="category card"
+        /> */}
+        <Box sx={{
+           height: '100%', 
+           width: '100%', 
+           display: 'flex', 
+           justifyContent: 'center', 
+           alignItems: 'center',
+           margin: 'auto',
             }}>
           <Typography
-          sx={{marginTop: '25%',  position: 'relative', color: 'black', justifyContent: 'center', textAlign: 'center',
+          sx={{  position: 'relative', color: 'black', fontSize: '3.5vh'
  
         }}
          variant="h5" >

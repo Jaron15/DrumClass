@@ -80,7 +80,6 @@ function Navbar(props) {
     router.push('/')
   }
   const handleDrawerToggle = () => {
-    console.log('clicked');
     setMobileOpen(!mobileOpen);
   };
 
@@ -121,10 +120,12 @@ function Navbar(props) {
           </ListItem>
           
           <ListItem key='About' sx={{margin: {xs:'2.5vh', md:'1.5vh'}, width: {xs: '90%', md:'100%'}}} disablePadding className={styles.slideLeftLow}>
+         <Link href='/about'>                
             <ListItemButton sx={{ textAlign: 'center' }}>
             <Typography sx={{fontWeight: 'bold', fontSize: {xs:'2.75vh',md:'2.25vh'}, textAlign: 'center', width: '85%'}} >
               About</Typography>
             </ListItemButton>
+              </Link>
           </ListItem>
          
       </List>
@@ -181,7 +182,6 @@ function Navbar(props) {
             onKeyPress={(e) => {
               if (e.key === "Enter") {
                 const term = e.target.value;
-                console.log(term)
                 router.push('/search/' + term)
                 searchRef.current.value = '';
               }
