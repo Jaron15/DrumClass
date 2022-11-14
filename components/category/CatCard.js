@@ -28,9 +28,10 @@ const router = useRouter();
            justifyContent: 'center', 
            alignItems: 'center',
            margin: 'auto',
+          padding: '1.25vh'
             }}>
           <Typography
-          sx={{  position: 'relative', color: 'black', fontSize: '3.5vh'
+          sx={{  position: 'relative', color: 'black', fontSize: '3.5vh', 
  
         }}
          variant="h5" >
