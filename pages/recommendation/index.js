@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 import CategoryProvider from '../../store/CategoryProvider';
 import CategoryContext from '../../store/category-context';
-import { Typography } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -17,6 +17,7 @@ function index() {
   const router = useRouter();
   const catCtx = useContext(CategoryContext)
     const questions = catCtx.questions;
+    const [loading, setLoading]  = useState(false)
     
     const [value, setValue] = useState('');
     const [questionNumber, setQuestionNumber] = useState(-1)
@@ -37,6 +38,7 @@ function index() {
     }
     else if (value === 'No') {
       setTestActive(false)
+      setLoading(true)
       const subject = questions[questionNumber].category
       router.push('/recommendation/' + subject)
     }
@@ -101,8 +103,10 @@ It looks like you have a pretty good foundation on the drums. Everyone learns di
 </Box>
 
   </Box> )
+
   return (
     <Box sx={{width: '100%', height: '100%', display: 'flex', flexDirection: "column", alignItems: 'center', my: {xs:'15vh', sm:'25vh'}}}>
+      {loading && <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}><CircularProgress /></Box> }
      {questionNumber === -1 && intro}
      { testActive && (
      <Fragment><Box sx={{mx: 'auto',  }}>
